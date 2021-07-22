@@ -1,0 +1,26 @@
+# Update <REGISTRY> <NAMESPACE> values before use
+# Replace app name instead of get-started-aspnet if you wish to use different name for your app
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: dockertestappiks
+ labels:
+   app: dockertestappiks
+spec:
+ replicas: 2
+ selector:
+   matchLabels:
+     app: dockertestappiks
+ template:
+   metadata:
+     labels:
+       app: dockertestappiks
+   spec:
+     containers:
+     - name: dockertestappiks
+       image: us.icr.io/testcontainernew/testcontainer:container
+       ports:
+       - containerPort: 80
+       imagePullPolicy: Always
+       
